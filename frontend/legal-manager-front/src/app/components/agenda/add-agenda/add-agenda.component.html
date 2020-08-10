@@ -1,0 +1,59 @@
+
+<div class="card-container">
+    <div class="card card-small" (click)="open(content)" tabindex="0">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        <span>Nova Agenda</span>
+    </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Adicionar Agenda</h4> 
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="agendaForm" #formDir="ngForm" (ngSubmit)="onSubmit()" role="form">
+        <div class="modal-body">
+            <div class="form-content">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control" placeholder="aaaa-mm-dd"
+                                        name="dataAgenda" formControlName="dataAgenda" ngbDatepicker #dp="ngbDatepicker">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                                </div>
+                            </div>
+                            <span class="descricaoInput">Data da agenda.</span>
+                        </div>
+                        <div class="form-group">
+                            <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-outline-primary" id="dropdownTipo" type="button" ngbDropdownToggle>
+                                    {{dropDownTipo()}}
+                                </button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownLocalidades">
+                                    <button (click)="changeDropDownTipo(tipo)" ngbDropdownItem *ngFor="let tipo of tipos" type="button">
+                                        {{ tipo.nome }}
+                                    </button>
+                                </div>
+                            </div>
+                            <p *ngIf="formDir.submitted && f.tipoAgenda.invalid" class="text-danger">Campo obrigatório.</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="descricao" class="form-control" id="descricao" maxlength="250"
+                                [ngClass]="{ 'is-invalid': formDir.submitted && f.descricao.invalid }">
+                            <span class="descricaoInput">Descrição da agenda.</span>
+                            <p *ngIf="formDir.submitted && f.descricao.invalid" class="text-danger">Campo obrigatório.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn rounded-btn" >Cadastrar</button>
+            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Fechar</button>
+        </div>
+    </form>
+</ng-template>

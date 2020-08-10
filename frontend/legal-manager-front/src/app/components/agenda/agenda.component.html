@@ -1,0 +1,37 @@
+<table class="card-body table table-hover table-sm scroll">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Data de início</th>
+            <th>Data da agenda</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <ng-container *ngIf="pageable.totalElements > 0; else elseTemplateAgenda">
+        <tbody *ngFor="let agenda of pageable.content">
+            <tr>
+                <td>{{ agenda.tipo.nome }}</td>
+                <td>{{ agenda.descricao }}</td>
+                <td>{{ agenda.dataInicio }}</td>
+                <td>{{ agenda.dataAgenda }}</td>
+                <td>{{ agenda.status?.nome }}</td>
+            </tr>
+        </tbody>
+    </ng-container>
+    <ng-template #elseTemplateAgenda>
+        <caption>
+            <div class="msgEmpty">Sua agenda está vazia</div>
+        </caption>
+    </ng-template>
+</table>
+
+<ngb-pagination 
+    class="d-flex justify-content-center"
+    size="sm"
+    [collectionSize]="collectionSize" 
+    [pageSize]="size"
+    [(page)]="advancedPagination"
+    [maxSize]="10"
+    (pageChange)="pageChange($event)">
+</ngb-pagination> 
