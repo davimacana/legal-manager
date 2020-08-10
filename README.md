@@ -5,29 +5,7 @@ Projeto teste legal manager
                                                                   
 Angular CLI: 9.1.12                                               
 Node: 10.15.3                                                     
-OS: win32 x64                                                     
-                                                                  
-Angular: 9.1.12                                                   
-... animations, cli, common, compiler, compiler-cli, core, forms  
-... localize, platform-browser, platform-browser-dynamic, router  
-Ivy Workspace: Yes                                                
-                                                                  
-Package                           Version                         
------------------------------------------------------------       
-@angular-devkit/architect         0.901.12                        
-@angular-devkit/build-angular     0.901.12                        
-@angular-devkit/build-optimizer   0.901.12                        
-@angular-devkit/build-webpack     0.901.12                        
-@angular-devkit/core              9.1.12                          
-@angular-devkit/schematics        9.1.12                          
-@ngtools/webpack                  9.1.12                          
-@schematics/angular               9.1.12                          
-@schematics/update                0.901.12                        
-rxjs                              6.5.5                           
-typescript                        3.8.3                           
-webpack                           4.42.0            
-
-Além das versões do Angular citadas acima, foi utilizado também o conjunto de componentes do "@ng-bootstrap/ng-bootstrap": "^6.2.0".
+NG Bootstrap: 6.2.0
 
 Para executar o projeto angular navegue até a raiz do projeto e execute os comandos abaixo:
 ```bash
