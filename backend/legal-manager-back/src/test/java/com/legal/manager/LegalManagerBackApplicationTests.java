@@ -33,6 +33,7 @@ class LegalManagerBackApplicationTests {
 	
 	@Test
 	void contextLoads() {
+		
 	}
 	
 	@Test
